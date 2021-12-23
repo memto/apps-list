@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { axiosGetCancellable } from "../../helpers/axios.helper";
+
 const axiosConfig = {
     baseURL: 'https://api.github.com',
     auth: {
@@ -10,7 +12,12 @@ const axiosConfig = {
 
 function searchRepos(searchText, lang) {
     const query = lang ? `${searchText}+language:${lang}` : searchText;
-    return axios.get(
+    // return axios.get(
+    //     `/search/repositories?q=${query}&sort=stars&order=desc`,
+    //     axiosConfig
+    // );
+    
+    return axiosGetCancellable(
         `/search/repositories?q=${query}&sort=stars&order=desc`,
         axiosConfig
     );

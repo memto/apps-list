@@ -28,10 +28,12 @@ export default function HomePage(props: any) {
   const loadRepos = async (searchText, language) => {
     setLoading(true);
     const res = await searchRepos(searchText, language);
-    console.log("items ->", res.data.items);
-    setLoading(false);
-
-    setRepos(res.data.items);
+    
+    if (res && res.data) {
+      console.log("items ->", res.data.items);
+      setRepos(res.data.items);
+      setLoading(false);
+    }
   }
 
   const handleSearchTextChange = (text) => {
@@ -59,6 +61,8 @@ export default function HomePage(props: any) {
       />
       
       {loading && <h1>Loading</h1>}
+
+      {JSON.stringify(repos)}
     </>
   )
 }
