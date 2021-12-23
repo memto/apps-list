@@ -1,32 +1,71 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import Search from '../components/search';
+import { searchRepos } from './api/github';
 
-export default function HomePage(props) {
-  const [joke, setJoke] = useState('');
+export default function HomePage(props: any) {
+  const [searchText, setSearchText] = useState('');
+  const [language, setLanguage] = useState('all');
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    getJoke()
-    .then((data) => setJoke(data))
-    .catch(err => {
-      console.log("get joke failed");
-    })
-  }, [])
+  // useEffect(() => {
+  //   if (searchText.length > 0) {
+  //     setLoading(true);
+  //     searchRepos(searchText, language)
+  //     .then(res => {
+  //       console.log("items -> ", res.data.items)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  //   }
+  // }, [searchText, language])
 
-  const getJoke = async () => {
-    const res = await axios.get('https://api.chucknorris.io/jokes/random');
-    return res.data.value;
+  const loadRepos = async (searchText, language) => {
+    setLoading(true);
+    const res = await searchRepos(searchText, language);
+    console.log("items ->", res.data.items);
+    setLoading(false);
+
+    setRepos(res.data.items);
+  }
+
+  const handleSearchTextChange = (text) => {
+    console.log("handleSearchTextChange ->", text);
+    setSearchText(text);
+
+    if (text.length > 0)
+      loadRepos(text, language);
+  }
+
+  const handleLanguageChange = (lang) => {
+    console.log("handleLanguageChange ->", lang);
+    setLanguage(lang)
+
+    loadRepos(searchText, lang);
   }
 
   return (    
     <>
-    <h1>Home page</h1>
-    <p>Value CSR: {joke}</p>
-    <p>Value SSR: {props.value}</p>
+      <Search 
+        searchText={searchText} 
+        language={language} 
+        onSearchTextChange={handleSearchTextChange} 
+        onLanguageChange={handleLanguageChange}
+      />
+      
+      {loading && <h1>Loading</h1>}
     </>
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
+  console.log("getServerSideProps")
+
   const res = await axios.get('https://api.chucknorris.io/jokes/random')
 
   return {
