@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Search from '../components/search';
-import { searchRepos } from './api/github';
+import { searchRepos } from '../services/github';
 
 export default function HomePage(props: any) {
   const [searchText, setSearchText] = useState('');
