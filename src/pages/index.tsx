@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import RepoList from '../components/repo-list';
 import Search from '../components/search';
 import { searchRepos } from '../services/github';
 
 export default function HomePage(props: any) {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState(props.searchText);
   const [language, setLanguage] = useState('all');
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState(props.repos);
   const [loading, setLoading] = useState(false)
 
   // useEffect(() => {
@@ -60,21 +61,26 @@ export default function HomePage(props: any) {
         onLanguageChange={handleLanguageChange}
       />
       
-      {loading && <h1>Loading</h1>}
-
-      {JSON.stringify(repos)}
+      <RepoList repos={repos} loading={loading} />
     </>
   )
 }
 
 export const getServerSideProps = async () => {
-  console.log("getServerSideProps")
+  const resRandom = await axios.get('https://api.chucknorris.io/jokes/random');
+  console.log("getServerSideProps => restRandom: ", resRandom.data.value.split(" ").pop());
 
-  const res = await axios.get('https://api.chucknorris.io/jokes/random')
+  const someTextSearchs = ["react", "java", "restfull", "AI", "render", "game"]
+  let searchText = "pizza";
+  searchText = someTextSearchs[Math.floor(Math.random()*someTextSearchs.length)];
+  
+  console.log("getServerSideProps => searchText: ", searchText);
+  const resRepos = await searchRepos(searchText);
 
   return {
     props: {
-      value: res.data.value
+      searchText: searchText,
+      repos: resRepos.data.items
     }
-  }
+  };
 }
