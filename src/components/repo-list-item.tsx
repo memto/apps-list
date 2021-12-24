@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 
+import {FaStar, FaCodeBranch} from 'react-icons/fa';
+
+import UserAvatar from './user-avatar';
 import styles from './repo-list-item.module.scss'
 
 const RepoListItem = ({ repo }) => {
   const cutDescription = (description) => {
-    if (description.length > 100) {
+    if (description && description.length > 100) {
       return description.slice(0, 100) + '...';
     }
 
@@ -20,14 +23,18 @@ const RepoListItem = ({ repo }) => {
         </Link>
       </div>
 
+      <UserAvatar user={repo.owner} />
+
       <p className={styles.description}>{cutDescription(repo.description)}</p>
 
       <div className={styles.footer}>
         <div className={styles.counters}>
           <div className={styles.counter}>
+            <FaStar />
             <span>{repo.stargazers_count}</span>
           </div>
           <div className={styles.counter}>
+            <FaCodeBranch />
             <span>{repo.forks_count}</span>
           </div>
         </div>
