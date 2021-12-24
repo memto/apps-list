@@ -7,10 +7,12 @@ const UserAvatar = ({ user }) => {
     return (
         <div className={styles.user}>
             <figure className={`${styles.avatar} image`}>
-                <Image 
+                <img
                     className="is-rounded" 
                     src={user.avatar_url} 
-                    alt="avatar" 
+                    alt="avatar"
+                    // width="100px"
+                    // height="100px"
                 />
             </figure>
             <div className={styles.userLink}>

@@ -7,7 +7,7 @@ import RepoList from '../components/repo-list';
 import Search from '../components/search';
 import { searchRepos } from '../services/github';
 
-import indexStyles from './index.module.scss'
+import styles from './index.module.scss'
 
 export default function HomePage(props: any) {
   const [searchText, setSearchText] = useState(props.searchText);
@@ -43,11 +43,13 @@ export default function HomePage(props: any) {
 
   return (    
     <>
-      <div className={indexStyles.container}>
-        <Image 
-          className={indexStyles.logo} 
+      <div className={styles.container}>
+        <img 
+          className={styles.logo} 
           src='/img/study.svg' 
           alt='logo'
+          // width={"500px"}
+          // height={"100%"}
         />
         <Search 
           searchText={searchText} 
