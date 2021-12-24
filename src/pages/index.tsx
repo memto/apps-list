@@ -8,7 +8,7 @@ export default function HomePage(props: any) {
     {
       id: 0,
       name: "Wallets management",
-      app_url: "/walletsapp",
+      app_url: "/walletsapp/user-search",
       owner: {
         avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
         login: "freeCodeCamp"
@@ -18,7 +18,7 @@ export default function HomePage(props: any) {
     {
       id: 0,
       name: "Wallets management",
-      app_url: "/walletsapp",
+      app_url: "/walletsapp/user-search",
       owner: {
         avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
         login: "freeCodeCamp"
@@ -28,7 +28,7 @@ export default function HomePage(props: any) {
     {
       id: 0,
       name: "Wallets management",
-      app_url: "/walletsapp",
+      app_url: "/walletsapp/user-search",
       owner: {
         avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
         login: "freeCodeCamp"
@@ -38,7 +38,7 @@ export default function HomePage(props: any) {
     {
       id: 0,
       name: "Wallets management",
-      app_url: "/walletsapp",
+      app_url: "/walletsapp/user-search",
       owner: {
         avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
         login: "freeCodeCamp"

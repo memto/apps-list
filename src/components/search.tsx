@@ -4,7 +4,7 @@ import Select from './shared/select'
 
 import LANGUAGES from '../constants/language.constants'
 
-import searchStyles from './search.module.scss'
+import styles from './search.module.scss'
 
 const Search = (props: any) => {
     const {searchText, language, onSearchTextChange, onLanguageChange} = props;
@@ -12,16 +12,16 @@ const Search = (props: any) => {
     const languages = [{value: '', label: 'all'}, ...LANGUAGES];
 
     return (
-        <div className={searchStyles.search}>
+        <div className={styles.search}>
             <TextInput
-                className={searchStyles.searchInput}
+                className={styles.searchInput}
                 label="Search Repo" 
                 value={searchText} 
                 onChange={onSearchTextChange}
                 placeholder="Some repo name"
             />
             <Select
-                className={searchStyles.languageSelect}
+                className={styles.languageSelect}
                 label="Language" 
                 value={language} 
                 onChange={onLanguageChange}    

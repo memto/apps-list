@@ -7,7 +7,8 @@ const TextInput = ({label, value, onChange, placeholder, className}) => {
             <div className="control">
                 <label className="label">{label}</label>
                 <input 
-                    className="input is-primary" type="text" 
+                    className="input is-primary" 
+                    type="text" 
                     value={value} 
                     placeholder={placeholder} 
                     onChange={e => onChange(e.target.value)}></input>            

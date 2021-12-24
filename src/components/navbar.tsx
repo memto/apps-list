@@ -18,7 +18,7 @@ const NavBar = () => {
 
         <div id="navbarBasicExample" className="navbar-menu">
             <div className="navbar-start">
-            <Link href="/walletsapp">
+            <Link href="/walletsapp/user-search">
                 <a className="navbar-item"> Wallets app </a>
             </Link>
 
