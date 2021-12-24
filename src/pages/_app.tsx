@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       
       <NavBar></NavBar>
+      
       <div className="page">
         <Component {...pageProps} />
       </div>
