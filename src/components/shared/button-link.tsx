@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './button-link.module.scss';
 import Link from 'next/link';
 
-const ButtonLink = ({ href, text, type = 'primary', target, external }) => {
+const ButtonLink = ({ href, text, type = 'primary', target = "", external = false }) => {
     const types = {
         primary: 'is-primary',
         success: 'is-success',

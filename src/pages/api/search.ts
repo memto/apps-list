@@ -8,7 +8,7 @@ const axiosConfig = {
   }
 };
 
-export default async (req, res) => {
+const search = async (req, res) => {
   const { q, sort, order } = req.query;
 
   const response = await axios.get(
@@ -18,3 +18,5 @@ export default async (req, res) => {
 
   res.json(response.data);
 };
+
+export default search;

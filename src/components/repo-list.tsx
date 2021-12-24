@@ -1,13 +1,17 @@
 import React from 'react';
+import Image from 'next/image';
+
 import RepoListItem from './repo-list-item';
 
 import styles from "./repo-list.module.scss";
 
 const RepoList = ({ repos, loading }) => {
   if (loading) {
-    return <img 
+    return <Image 
       className={styles.loader}
-      src="/img/loader.gif" />;
+      src="/img/loader.gif"
+      alt='logo'
+    />
   }
 
   if (!repos || repos.length === 0) {

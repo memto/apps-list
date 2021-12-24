@@ -1,5 +1,8 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+
+import Image from 'next/image';
+
 import RepoList from '../components/repo-list';
 import Search from '../components/search';
 import { searchRepos } from '../services/github';
@@ -11,22 +14,6 @@ export default function HomePage(props: any) {
   const [language, setLanguage] = useState('all');
   const [repos, setRepos] = useState(props.repos);
   const [loading, setLoading] = useState(false)
-
-  // useEffect(() => {
-  //   if (searchText.length > 0) {
-  //     setLoading(true);
-  //     searchRepos(searchText, language)
-  //     .then(res => {
-  //       console.log("items -> ", res.data.items)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  //   }
-  // }, [searchText, language])
 
   const loadRepos = async (searchText, language) => {
     setLoading(true);
@@ -57,7 +44,11 @@ export default function HomePage(props: any) {
   return (    
     <>
       <div className={indexStyles.container}>
-        <img className={indexStyles.logo} src='/img/study.svg'></img>
+        <Image 
+          className={indexStyles.logo} 
+          src='/img/study.svg' 
+          alt='logo'
+        />
         <Search 
           searchText={searchText} 
           language={language} 
