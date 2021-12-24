@@ -1,6 +1,6 @@
 import React from 'react';
-import ButtonLink from '../../components/shared/button-link';
-import { getProfile } from '../../services/github';
+import ButtonLink from '../../../components/shared/button-link';
+import { getProfile } from '../../../services/github';
 
 import styles from './profile.module.scss';
 

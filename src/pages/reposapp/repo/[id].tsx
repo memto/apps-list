@@ -1,8 +1,8 @@
 import React from 'react';
-import { getRepo } from '../../services/github';
+import { getRepo } from '../../../services/github';
 import styles from './repo.module.scss';
-import ButtonLink from '../../components/shared/button-link';
-import UserAvatar from '../../components/user-avatar';
+import ButtonLink from '../../../components/shared/button-link';
+import UserAvatar from '../../../components/user-avatar';
 
 const Repo = ({ repo }) => {
     return (

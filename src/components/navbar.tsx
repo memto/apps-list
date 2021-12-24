@@ -1,27 +1,12 @@
 import Link from "next/link";
 
 const NavBar = () => {
-    return (
-        // <div>
-        //     <ul>
-        //         <li>
-        //             <Link href="/">
-        //                 <a>Home</a>
-        //             </Link>
-        //         </li>
-        //         <li>
-        //             <Link href="/about">
-        //                 <a>About</a>
-        //             </Link>
-        //         </li>
-        //     </ul>
-        // </div>  
-        
+    return (      
         <>        
         <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
             <Link href="/">
-                <a className="navbar-item" href="https://bulma.io">Github Repos 📦</a>
+                <a className="navbar-item" >NextJS apps 📦</a>
             </Link>
 
             <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -33,8 +18,12 @@ const NavBar = () => {
 
         <div id="navbarBasicExample" className="navbar-menu">
             <div className="navbar-start">
-            <Link href="/">
-                <a className="navbar-item"> Home </a>
+            <Link href="/walletsapp">
+                <a className="navbar-item"> Wallets app </a>
+            </Link>
+
+            <Link href="/reposapp">
+                <a className="navbar-item"> Repos app </a>
             </Link>
 
             <Link href="/about">
