@@ -1,15 +1,15 @@
-@import '../scss/colors.scss';
+@import "../scss/colors.scss";
 
 .appListItem {
-    width: 360px;
-    margin: 10px;
-    display: flex;   
-    flex-direction: column;
-    justify-content: space-between;
+  width: 360px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    a:hover {
-        color: $app-green;
-    }
+  a:hover {
+    color: $app-green;
+  }
 }
 
 .appName {

@@ -3,33 +3,33 @@ import React from 'react'
 import styles from './search.module.scss'
 
 const Search = (props: any) => {
-    const {label, placeholder, searchText, onSearchTextChange, submitText, onSubmit} = props;
+  const { label, placeholder, searchText, onSearchTextChange, submitText, onSubmit } = props;
 
-    return (
-        <div className={styles.search}>
-            <label className='label'>{label}</label>
+  return (
+    <div className={styles.search}>
+      <label className='label'>{label}</label>
 
-            <div className="field is-grouped">
-            <p className="control">
-                <input 
-                    type="text"
-                    placeholder={placeholder}
-                    className={`input is-primary ${styles.searchInput}`} 
-                    value={searchText}
-                    onChange={e => onSearchTextChange(e.target.value)}
-                />
-            </p>
-            <p className="control">
-                <a 
-                    className="button is-dark"
-                    onClick={onSubmit}
-                >
-                    {submitText ? submitText : "Search"}
-                </a>
-            </p>
-            </div>
-        </div>
-    )
+      <div className="field is-grouped">
+        <p className="control">
+          <input
+            type="text"
+            placeholder={placeholder}
+            className={`input is-primary ${styles.searchInput}`}
+            value={searchText}
+            onChange={e => onSearchTextChange(e.target.value)}
+          />
+        </p>
+        <p className="control">
+          <a
+            className="button is-dark"
+            onClick={onSubmit}
+          >
+            {submitText ? submitText : "Search"}
+          </a>
+        </p>
+      </div>
+    </div>
+  )
 }
 
 export default Search

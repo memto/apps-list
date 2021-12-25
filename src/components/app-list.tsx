@@ -7,7 +7,7 @@ import styles from "./app-list.module.scss";
 
 const AppList = ({ apps, loading }) => {
   if (loading) {
-    return <img 
+    return <img
       className={styles.loader}
       src="/img/loader.gif"
       alt='logo'

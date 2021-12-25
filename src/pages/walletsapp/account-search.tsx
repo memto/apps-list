@@ -7,46 +7,46 @@ import WalletsAppLayout from '../../layouts/WalletsAppLayout';
 import { searchAccount } from '../../services/sample-account';
 
 function AccountSearch() {
-    const [searchText, setSearchText] = useState("");
-    const [account, setAccount] = useState();
-    const [loading, setLoading] = useState(false)
-    
-    const loadAccount = async (accId) => {
-      setLoading(true);
-      const res = await searchAccount(accId);
+  const [searchText, setSearchText] = useState("");
+  const [account, setAccount] = useState();
+  const [loading, setLoading] = useState(false)
 
-      if (res) {
-        setAccount(res.data);
-        setLoading(false);
-      }
+  const loadAccount = async (accId) => {
+    setLoading(true);
+    const res = await searchAccount(accId);
+
+    if (res) {
+      setAccount(res.data);
+      setLoading(false);
     }
+  }
 
-    const handleSubmit = () => {
-      loadAccount(searchText);
-    }
+  const handleSubmit = () => {
+    loadAccount(searchText);
+  }
 
-    return (
-      <>
-        <Search 
-            label = "Accounts search"
-            placeholder = "Enter an account ID"
-            searchText = {searchText}
-            onSearchTextChange = {(text) => {
-              setSearchText(text); setAccount(undefined)
-            }}
-            onSubmit = {handleSubmit}
-        />
+  return (
+    <>
+      <Search
+        label="Accounts search"
+        placeholder="Enter an account ID"
+        searchText={searchText}
+        onSearchTextChange={(text) => {
+          setSearchText(text); setAccount(undefined)
+        }}
+        onSubmit={handleSubmit}
+      />
 
-        {account && <AccountDetails account={account} />}
-      </>
-    )
+      {account && <AccountDetails account={account} />}
+    </>
+  )
 }
 
 AccountSearch.getLayout = (page: ReactElement) => {
   return (
-      <WalletsAppLayout>
-        {page}
-      </WalletsAppLayout>
+    <WalletsAppLayout>
+      {page}
+    </WalletsAppLayout>
   )
 }
 

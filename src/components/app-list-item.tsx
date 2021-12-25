@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import {FaStar, FaCodeBranch} from 'react-icons/fa';
-
 import UserAvatar from './user-avatar';
 import styles from './app-list-item.module.scss'
 import ButtonLink from './shared/button-link';
@@ -29,13 +27,13 @@ const AppListItem = ({ app }) => {
       <p className={styles.description}>{cutDescription(app.description)}</p>
 
       <div className={styles.footer}>
-      <ButtonLink
-                href={app.app_url}
-                text="Go to app"
-                type="dark"
-                target=""
-                external={false}
-            />
+        <ButtonLink
+          href={app.app_url}
+          text="Go to app"
+          type="dark"
+          target=""
+          external={false}
+        />
       </div>
     </div>
   );

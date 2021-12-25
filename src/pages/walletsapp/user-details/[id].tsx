@@ -4,28 +4,28 @@ import WalletsAppLayout from '../../../layouts/WalletsAppLayout'
 import { getUserAccounts } from '../../../services/sample-account'
 
 const Account = () => {
-    return (
-        <div>
-            User accounts page
-        </div>
-    )
+  return (
+    <div>
+      User accounts page
+    </div>
+  )
 }
 
 export const getServerSideProps = async ({ query }) => {
-    console.log("Account/getServerSideProps: ", query.id)
-    const res = await getUserAccounts(query.id);
+  console.log("Account/getServerSideProps: ", query.id)
+  const res = await getUserAccounts(query.id);
 
-    return {
-        props: { profile: res.data }
-    }
+  return {
+    props: { profile: res.data }
+  }
 }
 
 Account.getLayout = (page: ReactElement) => {
-    return (
-        <WalletsAppLayout>
-            {page}
-        </WalletsAppLayout>
-    )
+  return (
+    <WalletsAppLayout>
+      {page}
+    </WalletsAppLayout>
+  )
 }
 
 export default Account

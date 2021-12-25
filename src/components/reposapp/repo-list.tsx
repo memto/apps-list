@@ -6,7 +6,7 @@ import styles from "./repo-list.module.scss";
 
 const RepoList = ({ repos, loading }) => {
   if (loading) {
-    return <img 
+    return <img
       className={styles.loader}
       src="/img/loader.gif"
       alt='logo'

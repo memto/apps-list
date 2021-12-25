@@ -2,9 +2,9 @@ import AppsListLayout from './AppsListLayout'
 
 const ReposAppLayout = ({ children }) => {
   return (
-      <AppsListLayout>
-        {children}
-      </AppsListLayout>
+    <AppsListLayout>
+      {children}
+    </AppsListLayout>
   )
 }
 

@@ -29,12 +29,12 @@ const apps = [
 ];
 
 export default function AppsList(props: any) {
-  return (    
+  return (
     <>
       <div className={styles.container}>
-        <img 
-          className={styles.logo} 
-          src='/img/undraw_nuxt_js.svg' 
+        <img
+          className={styles.logo}
+          src='/img/undraw_nuxt_js.svg'
           alt='logo'
         />
 
@@ -54,8 +54,8 @@ export const getServerSideProps = async () => {
 
 AppsList.getLayout = (page: ReactElement) => {
   return (
-      <AppsListLayout>
-        {page}
-      </AppsListLayout>
+    <AppsListLayout>
+      {page}
+    </AppsListLayout>
   )
 }

@@ -1,12 +1,12 @@
-@import '../../scss/colors.scss';
+@import "../../scss/colors.scss";
 
 .accountDetails {
-    display: flex;   
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 30px;
 
-    // label {
-    //     color: $app-dark-green;
-    // }
+  // label {
+  //     color: $app-dark-green;
+  // }
 }

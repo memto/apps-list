@@ -17,7 +17,7 @@ export default function ReposApp(props: any) {
   const loadRepos = async (searchText, language) => {
     setLoading(true);
     const res = await searchRepos(searchText, language);
-    
+
     if (res && res.data) {
       console.log("items ->", res.data.items);
       setRepos(res.data.items);
@@ -40,22 +40,22 @@ export default function ReposApp(props: any) {
     loadRepos(searchText, lang);
   }
 
-  return (    
+  return (
     <>
       <div className={styles.container}>
-        <img 
-          className={styles.logo} 
-          src='/img/study.svg' 
+        <img
+          className={styles.logo}
+          src='/img/study.svg'
           alt='logo'
         />
 
-        <Search 
-          searchText={searchText} 
-          language={language} 
-          onSearchTextChange={handleSearchTextChange} 
+        <Search
+          searchText={searchText}
+          language={language}
+          onSearchTextChange={handleSearchTextChange}
           onLanguageChange={handleLanguageChange}
         />
-        
+
         <RepoList repos={repos} loading={loading} />
       </div>
     </>
@@ -68,8 +68,8 @@ export const getServerSideProps = async () => {
 
   const someTextSearchs = ["react", "java", "restfull", "AI", "render", "game"]
   let searchText = "pizza";
-  searchText = someTextSearchs[Math.floor(Math.random()*someTextSearchs.length)];
-  
+  searchText = someTextSearchs[Math.floor(Math.random() * someTextSearchs.length)];
+
   console.log("getServerSideProps => searchText: ", searchText);
   const resRepos = await searchRepos(searchText);
 
@@ -83,8 +83,8 @@ export const getServerSideProps = async () => {
 
 ReposApp.getLayout = (page: ReactElement) => {
   return (
-      <ReposAppLayout>
-        {page}
-      </ReposAppLayout>
+    <ReposAppLayout>
+      {page}
+    </ReposAppLayout>
   )
 }

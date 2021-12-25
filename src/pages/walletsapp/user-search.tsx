@@ -15,7 +15,7 @@ export default function UserSearch() {
   const loadUser = async (userId) => {
     setLoading(true);
     const res = await searchUser(userId);
-    
+
     if (res) {
       setUser(res.data);
       setLoading(false);
@@ -26,16 +26,16 @@ export default function UserSearch() {
     loadUser(searchText);
   }
 
-  return (    
-    <>      
-      <Search 
-        label = "Users search"
-        placeholder = "Enter a user ID"
-        searchText = {searchText}
-        onSearchTextChange = {(text) => {
+  return (
+    <>
+      <Search
+        label="Users search"
+        placeholder="Enter a user ID"
+        searchText={searchText}
+        onSearchTextChange={(text) => {
           setSearchText(text); setUser(undefined)
         }}
-        onSubmit = {handleSubmit}
+        onSubmit={handleSubmit}
       />
 
       {user && <UserDetails user={user} />}
@@ -45,8 +45,8 @@ export default function UserSearch() {
 
 UserSearch.getLayout = (page: ReactElement) => {
   return (
-      <WalletsAppLayout>
-        {page}
-      </WalletsAppLayout>
+    <WalletsAppLayout>
+      {page}
+    </WalletsAppLayout>
   )
 }

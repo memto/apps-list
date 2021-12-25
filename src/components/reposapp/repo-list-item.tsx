@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import {FaStar, FaCodeBranch} from 'react-icons/fa';
+import { FaStar, FaCodeBranch } from 'react-icons/fa';
 
 import UserAvatar from '../user-avatar';
 import styles from './repo-list-item.module.scss'
