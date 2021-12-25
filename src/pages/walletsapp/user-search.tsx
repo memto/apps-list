@@ -17,14 +17,12 @@ export default function UserSearch() {
     const res = await searchUser(userId);
     
     if (res) {
-      console.log("loadUser ->", res);
       setUser(res.data);
       setLoading(false);
     }
   }
 
   const handleSubmit = () => {
-    console.log("handleSubmit ->", searchText);
     loadUser(searchText);
   }
 

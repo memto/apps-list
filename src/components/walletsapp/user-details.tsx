@@ -5,7 +5,7 @@ import ButtonLink from '../shared/button-link';
 import styles from './user-details.module.scss'
 
 const UserDetails = ({user}) => {
-    console.log("UserDetails =>", user);
+    // console.log("UserDetails =>", user);
 
     const account_ids = user.attributes.account_ids.join(",");
 
