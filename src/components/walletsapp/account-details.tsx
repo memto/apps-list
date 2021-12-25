@@ -16,7 +16,7 @@ const AccountDetails = ({ account }) => {
       <div>User ID: {account.attributes.user_id}</div>
 
       <ButtonLink
-        href={`/walletsapp/user-details/${account.attributes.user_id}`}
+        href={`/walletsapp/user-accounts/${account.attributes.user_id}`}
         text="Go to user accounts page"
         type="dark"
         target=""
