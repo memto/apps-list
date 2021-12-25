@@ -9,19 +9,26 @@ import { searchAccount } from '../../services/sample-account';
 function AccountSearch() {
   const [searchText, setSearchText] = useState("");
   const [account, setAccount] = useState();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const loadAccount = async (accId) => {
     setLoading(true);
-    const res = await searchAccount(accId);
-
-    if (res) {
+    searchAccount(accId)
+    .then(res => {
       setAccount(res.data);
+    })
+    .catch(err => {
+      setAccount(undefined);
+      setError(`Failed to search for account ID: ${accId}`)
+    })
+    .finally(() => {
       setLoading(false);
-    }
+    });
   }
 
   const handleSubmit = () => {
+    setError("");
     loadAccount(searchText);
   }
 
@@ -32,12 +39,15 @@ function AccountSearch() {
         placeholder="Enter an account ID"
         searchText={searchText}
         onSearchTextChange={(text) => {
-          setSearchText(text); setAccount(undefined)
+          setSearchText(text); 
+          setAccount(undefined);
+          setError("");
         }}
         onSubmit={handleSubmit}
       />
 
       {account && <AccountDetails account={account} />}
+      {error && <div>{error}</div>}
     </>
   )
 }

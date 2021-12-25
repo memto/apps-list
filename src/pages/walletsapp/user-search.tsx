@@ -11,18 +11,25 @@ export default function UserSearch() {
   const [searchText, setSearchText] = useState("");
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const loadUser = async (userId) => {
     setLoading(true);
-    const res = await searchUser(userId);
-
-    if (res) {
+    searchUser(userId)
+    .then(res => {
       setUser(res.data);
+    })
+    .catch(err => {
+      setUser(undefined);
+      setError(`Failed to search for user ID: ${userId}`)
+    })
+    .finally(() => {
       setLoading(false);
-    }
+    });
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = () => {   
+    setError(""); 
     loadUser(searchText);
   }
 
@@ -33,12 +40,15 @@ export default function UserSearch() {
         placeholder="Enter a user ID"
         searchText={searchText}
         onSearchTextChange={(text) => {
-          setSearchText(text); setUser(undefined)
+          setSearchText(text); 
+          setUser(undefined);
+          setError("");
         }}
         onSubmit={handleSubmit}
       />
 
       {user && <UserDetails user={user} />}
+      {error && <div>{error}</div>}
     </>
   )
 }
