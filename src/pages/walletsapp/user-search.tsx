@@ -1,56 +1,54 @@
-import axios from 'axios'
-import Link from 'next/link';
-import { useState, useEffect } from 'react'
-import Search from './components/search';
-import Sidebar from './components/sidebar';
+import { ReactElement, useState } from 'react'
 
-import styles from './index.module.scss'
+import WalletsAppLayout from '../../layouts/WalletsAppLayout';
+
+import Search from '../../components/walletsapp/search';
+import UserDetails from '../../components/walletsapp/user-details';
+
+import { searchUser } from '../../services/sample-account';
 
 export default function UserSearch() {
   const [searchText, setSearchText] = useState("");
-  const [repos, setRepos] = useState([]);
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(false)
 
-  const loadRepos = async (searchText, language) => {
+  const loadUser = async (userId) => {
     setLoading(true);
-    const res = {data: null};
+    const res = await searchUser(userId);
     
-    if (res && res.data) {
-      console.log("items ->", res.data.items);
-      setRepos(res.data.items);
+    if (res) {
+      console.log("loadUser ->", res);
+      setUser(res.data);
       setLoading(false);
     }
   }
 
   const handleSubmit = () => {
     console.log("handleSubmit ->", searchText);
+    loadUser(searchText);
   }
 
   return (    
-    <>
-      <div className="main-content columns is-fullheight">  
-        <div className="column is-2 is-narrow-mobile is-fullheight is-hidden-mobile">
-          <Sidebar />
-        </div>
+    <>      
+      <Search 
+        label = "Users search"
+        placeholder = "Enter a user ID"
+        searchText = {searchText}
+        onSearchTextChange = {(text) => {
+          setSearchText(text); setUser(undefined)
+        }}
+        onSubmit = {handleSubmit}
+      />
 
-        <div className="column is-10">
-          <Search 
-            label = "Users search"
-            placeholder = "Enter a user ID"
-            searchText = {searchText}
-            onSearchTextChange = {(text) => setSearchText(text)}
-            onSubmit = {handleSubmit}
-          />
-        </div>          
-      </div>
+      {user && <UserDetails user={user} />}
     </>
   )
 }
 
-export const getServerSideProps = async () => {
-  return {
-    props: {
-      value: "getServerSideProps"
-    }
-  }
+UserSearch.getLayout = (page: ReactElement) => {
+  return (
+      <WalletsAppLayout>
+        {page}
+      </WalletsAppLayout>
+  )
 }

@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+
+import getLayout from '../../../layouts/ReposAppLayout';
+
 import { getRepo } from '../../../services/github';
 import styles from './repo.module.scss';
 import ButtonLink from '../../../components/shared/button-link';
 import UserAvatar from '../../../components/user-avatar';
+import ReposAppLayout from '../../../layouts/ReposAppLayout';
 
 const Repo = ({ repo }) => {
     return (
         <div>
-            <ButtonLink href="/" text="Back" />
+            <ButtonLink href="/reposapp" text="Back" />
 
             <div className={styles.header}>
                 <span>{repo.name}</span>
@@ -33,5 +37,13 @@ export const getServerSideProps = async ({ query }) => {
         props: { repo: res.data }
     };
 };
+
+Repo.getLayout = (page: ReactElement) => {
+    return (
+        <ReposAppLayout>
+          {page}
+        </ReposAppLayout>
+    )
+}
 
 export default Repo;

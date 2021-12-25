@@ -1,5 +1,4 @@
 import React from 'react'
-import TextInput from '../../../components/shared/text-input'
 
 import styles from './search.module.scss'
 

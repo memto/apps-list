@@ -1,25 +1,21 @@
-import Head from 'next/head'
-
-import NavBar from '../components/navbar'
+import { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
 
 import '../scss/styles.scss'
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <div>
-      <Head>
-        <title>NextJS apps</title>
-        <meta name="description" content="Collection of NextJS applications" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      
-      <NavBar></NavBar>
-      
-      <div className="page">
-        <Component {...pageProps} />
-      </div>
-    </div>
-  )
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
 }
 
-export default MyApp
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function AppsListApp({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page)
+
+  return getLayout(<Component {...pageProps} />)
+}
+

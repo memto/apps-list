@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
+
+import ReposAppLayout from '../../../layouts/ReposAppLayout';
+
 import ButtonLink from '../../../components/shared/button-link';
 import { getProfile } from '../../../services/github';
 
 import styles from './profile.module.scss';
 
+
 const Profile = ({ profile }) => {
     return (
         <div>
-            <ButtonLink href="/" text="Back" />
+            <ButtonLink href="/reposapp" text="Back" />
 
             <h3 className="is-size-3">{profile.name}</h3>
             {profile.bio && <div className={styles.text}>{profile.bio}</div>}
@@ -33,13 +37,20 @@ const Profile = ({ profile }) => {
     );
 };
 
-
 export const getServerSideProps = async ({ query }) => {
     const res = await getProfile(query.id);
 
     return {
         props: { profile: res.data }
     }
+}
+
+Profile.getLayout = (page: ReactElement) => {
+    return (
+        <ReposAppLayout>
+          {page}
+        </ReposAppLayout>
+    )
 }
 
 export default Profile;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RiAppsLine } from "react-icons/ri";
 
 const NavBar = () => {
     return (      
@@ -6,7 +7,14 @@ const NavBar = () => {
         <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
             <Link href="/">
-                <a className="navbar-item" >NextJS apps 📦</a>
+                <a className="navbar-item">
+                    <span className="icon-text">
+                        <span>AppsList</span>
+                        <span className="icon">
+                            <RiAppsLine />
+                        </span>                        
+                    </span>
+                </a>
             </Link>
 
             <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

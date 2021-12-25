@@ -1,8 +1,8 @@
 import React from 'react'
-import TextInput from './shared/text-input'
-import Select from './shared/select'
+import TextInput from '../shared/text-input'
+import Select from '../shared/select'
 
-import LANGUAGES from '../constants/language.constants'
+import LANGUAGES from '../../constants/language.constants'
 
 import styles from './search.module.scss'
 

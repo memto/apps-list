@@ -1,63 +1,34 @@
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import getLayout from '../layouts/AppsListLayout'
+
 import AppList from '../components/app-list';
 import styles from './index.module.scss'
+import { ReactElement } from 'react';
+import AppsListLayout from '../layouts/AppsListLayout';
 
-export default function HomePage(props: any) {
-  const apps = [
-    {
-      id: 0,
-      name: "Wallets management",
-      app_url: "/walletsapp/user-search",
-      owner: {
-        avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
-        login: "freeCodeCamp"
-      },
-      description: "REST API plugin for Unreal Engine 4 - we love restfull backend and JSON communications!"
+const apps = [
+  {
+    id: 0,
+    name: "Wallets management",
+    app_url: "/walletsapp/user-search",
+    owner: {
+      avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
+      login: "freeCodeCamp"
     },
-    {
-      id: 0,
-      name: "Wallets management",
-      app_url: "/walletsapp/user-search",
-      owner: {
-        avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
-        login: "freeCodeCamp"
-      },
-      description: "REST API plugin for Unreal Engine 4 - we love restfull backend and JSON communications!"
+    description: "REST API plugin for Unreal Engine 4 - we love restfull backend and JSON communications!"
+  },
+  {
+    id: 1,
+    name: "Repos list",
+    app_url: "/reposapp",
+    owner: {
+      avatar_url: 'https://avatars.githubusercontent.com/u/5248574?v=4',
+      login: "phly"
     },
-    {
-      id: 0,
-      name: "Wallets management",
-      app_url: "/walletsapp/user-search",
-      owner: {
-        avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
-        login: "freeCodeCamp"
-      },
-      description: "REST API plugin for Unreal Engine 4 - we love restfull backend and JSON communications!"
-    },
-    {
-      id: 0,
-      name: "Wallets management",
-      app_url: "/walletsapp/user-search",
-      owner: {
-        avatar_url: 'https://avatars.githubusercontent.com/u/9892522?v=4',
-        login: "freeCodeCamp"
-      },
-      description: "REST API plugin for Unreal Engine 4 - we love restfull backend and JSON communications!"
-    },
-    {
-      id: 0,
-      name: "Repos list",
-      app_url: "/reposapp",
-      owner: {
-        avatar_url: 'https://avatars.githubusercontent.com/u/5248574?v=4',
-        login: "phly"
-      },
-      description: "REST API plugin for Unreal Engine 4 - we love restfull backend and JSON communications!"
-    }
-  ];
+    description: "REST API plugin for Unreal Engine 4 - we love restfull backend and JSON communications!"
+  }
+];
 
-
+export default function AppsList(props: any) {
   return (    
     <>
       <div className={styles.container}>
@@ -65,8 +36,6 @@ export default function HomePage(props: any) {
           className={styles.logo} 
           src='/img/undraw_nuxt_js.svg' 
           alt='logo'
-          // width={"500px"}
-          // height={"100%"}
         />
 
         <AppList apps={apps} loading={false} />
@@ -81,4 +50,12 @@ export const getServerSideProps = async () => {
       value: "getServerSideProps"
     }
   }
+}
+
+AppsList.getLayout = (page: ReactElement) => {
+  return (
+      <AppsListLayout>
+        {page}
+      </AppsListLayout>
+  )
 }

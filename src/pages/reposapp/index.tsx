@@ -1,15 +1,14 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { ReactElement, useState } from 'react'
 
-import Image from 'next/image';
-
-import RepoList from '../../components/repo-list';
-import Search from '../../components/search';
+import RepoList from '../../components/reposapp/repo-list';
+import Search from '../../components/reposapp/search'
+import ReposAppLayout from '../../layouts/ReposAppLayout';
 import { searchRepos } from '../../services/github';
 
 import styles from './index.module.scss'
 
-export default function HomePage(props: any) {
+export default function ReposApp(props: any) {
   const [searchText, setSearchText] = useState(props.searchText);
   const [language, setLanguage] = useState('all');
   const [repos, setRepos] = useState(props.repos);
@@ -48,9 +47,8 @@ export default function HomePage(props: any) {
           className={styles.logo} 
           src='/img/study.svg' 
           alt='logo'
-          // width={"500px"}
-          // height={"100%"}
         />
+
         <Search 
           searchText={searchText} 
           language={language} 
@@ -81,4 +79,12 @@ export const getServerSideProps = async () => {
       repos: resRepos.data.items
     }
   };
+}
+
+ReposApp.getLayout = (page: ReactElement) => {
+  return (
+      <ReposAppLayout>
+        {page}
+      </ReposAppLayout>
+  )
 }

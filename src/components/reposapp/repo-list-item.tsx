@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import {FaStar, FaCodeBranch} from 'react-icons/fa';
 
-import UserAvatar from './user-avatar';
+import UserAvatar from '../user-avatar';
 import styles from './repo-list-item.module.scss'
 
 const RepoListItem = ({ repo }) => {
@@ -18,7 +18,7 @@ const RepoListItem = ({ repo }) => {
   return (
     <div className={`${styles.repoListItem} box`}>
       <div className={styles.repoName}>
-        <Link href="/repo/[id]" as={`/repo/${repo.id}`}>
+        <Link href="/reposapp/repo/[id]" as={`/reposapp/repo/${repo.id}`}>
           <a>{repo.name}</a>
         </Link>
       </div>
